@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notepad AngularJS</title>
+    <link rel="stylesheet" href=
+    "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+              integrity=
+    "sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+              crossorigin="anonymous"> 
+</head>
+<body ng-app="app">
+
+        <div ng-controller="AppCtrl" class="container">
+            <h1 class="text-center">Angular Notepad</h1>
+            <div class="w-100 d-flex justify-content-around">
+                <div class="w-50 d-flex flex-column ">
+                    <input ng-model="newTitle" type="text" placeholder="Enter the title of your note ...">
+                    <textarea  ng-model="newContent" rows="30" cols="30" placeholder="Enter your note ..."></textarea>
+                    <div class="d-flex justify-content-around">
+                        <button class="btn btn-success" ng-click="save(newTitle,newContent)">Save</button>
+                        <button class="btn btn-danger" ng-click="clear()">clear</button>
+                    </div>
+                </div>
+                <div class="w-50  d-flex align-items-center flex-column">
+                    <div class="w-100">
+                        <div class="border p-2 w-100 text-center" role="button"  ng-repeat="note in notes" ng-click="showNote(note)">
+                            <h2 ng-class="(note.hidden === true) ? 'd-none' : ''">{{note.title}}</h2>
+                            <div ng-class="(note.hidden === false) ? 'd-none' : ''" >
+                                <h2>{{note.title}}  </h2>
+                                <p>{{note.date | date}}</p>
+                                <p>{{note.content}}</p>
+                            </div>
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <script src="./doc/angular.js"></script>
+    <script src="./doc/angular.min.js"></script>
+    <script src="./doc/angular-route.js"></script>
+    <script src="./doc/angular-sanitize.min.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
